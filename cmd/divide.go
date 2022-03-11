@@ -6,6 +6,7 @@ package cmd
 
 import (
 	"fmt"
+	"strconv"
 
 	"github.com/spf13/cobra"
 )
@@ -13,15 +14,19 @@ import (
 // divideCmd represents the divide command
 var divideCmd = &cobra.Command{
 	Use:   "divide",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Short: "Divide two numbers",
+	Long: `Divisionn of two numbers. The second number cannot be 0. The program will also display the result`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("divide called")
+		num1, _ := strconv.ParseUint(args[0], 10, 32)
+		num2, _ := strconv.ParseUint(args[1], 10, 32)
+
+		var div uint64 
+		if num2 != 0 {
+			div = num1 / num2
+		} else {
+			fmt.Println("Don't use 0 for this!")
+		}
+		fmt.Println(div)
 	},
 }
 
