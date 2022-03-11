@@ -19,14 +19,14 @@ var divideCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		num1, _ := strconv.ParseUint(args[0], 10, 32)
 		num2, _ := strconv.ParseUint(args[1], 10, 32)
-
-		var div uint64 
+ 
 		if num2 != 0 {
-			div = num1 / num2
+			div := num1 / num2
+			fmt.Println(div)
 		} else {
 			fmt.Println("Don't use 0 for this!")
 		}
-		fmt.Println(div)
+		
 	},
 }
 
